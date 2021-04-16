@@ -49,6 +49,7 @@ public class TokenProvider {
 
         Collection<? extends GrantedAuthority> authorities =
             Arrays.stream(claims.get(AUTHORITIES_KEY).toString().split(","))
+                .filter(authority -> !authority.isBlank())
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
 
